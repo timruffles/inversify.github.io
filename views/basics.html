@@ -1,0 +1,60 @@
+<p>todo</p>
+<!-- TS TABS -->
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#ts_basics" aria-controls="home" role="tab" data-toggle="tab">
+        TypeScript
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#js_basics" aria-controls="profile" role="tab" data-toggle="tab">
+        JavaScript
+      </a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="ts_basics">
+      <p>soldier.ts</p>
+<pre><code>/// &lt;reference path=&quot;../typings/inversify/inversify.d.ts&quot; /&gt;
+/// &lt;reference path=&quot;./interfaces.d.ts&quot;/&gt;
+
+import { inject, named } from "inversify";
+
+@inject("IKatana", "IShuriken")
+class Soldier {
+
+  private _katana : IKatana;
+  private _shuriken: IShuriken;
+
+  constructor(katana: IKatana, shuriken : IShuriken) {
+    this._katana = katana;
+    this._shuriken= shuriken ;
+  }
+
+}
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>/// &lt;reference path=&quot;../typings/inversify/inversify.d.ts&quot; /&gt;
+/// &lt;reference path=&quot;./interfaces.d.ts&quot;/&gt;
+
+import { Kernel, Binding } from "inversify";
+
+var kernel = new Kernel();
+kernel.bind(new Binding<IKatana>("IKatana").to(Katana));
+kernel.bind(new Binding<IShuriken>("IShuriken").to(Shuriken));
+</code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="js_basics">
+      <p>soldier.ts</p>
+<pre><code>// todo basics js
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>// todo basics js
+</code></pre>
+    </div>
+  </div>
+</div>
+<!-- END TS TABS-->

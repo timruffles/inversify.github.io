@@ -1,0 +1,57 @@
+<p>todo</p>
+<!-- TS TABS -->
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#ts_multi_injection" aria-controls="home" role="tab" data-toggle="tab">
+        TypeScript
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#js_multi_injection" aria-controls="profile" role="tab" data-toggle="tab">
+        JavaScript
+      </a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="ts_multi_injection">
+      <p>soldier.ts</p>
+<pre><code>import { inject, named } from "inversify";
+
+@inject("IWeapon[]")
+class Soldier {
+
+  private _mainWeapon : IWeapon;
+  private _secondaryWeapon : IWeapon;
+
+  constructor(
+    weapons: IWeapon[]
+  ) {
+
+    this._mainWeapon = weapons[0];
+    this._secondaryWeapon = weapons[1];
+  }
+
+}
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>import { Kernel, Binding } from "inversify";
+
+var kernel = new Kernel();
+kernel.bind(new Binding<IWeapon>("IWeapon").to(Katana));
+kernel.bind(new Binding<IWeapon>("IWeapon").to(Shuriken));
+</code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="js_multi_injection">
+      <p>soldier.ts</p>
+<pre><code>// todo multi-injection js
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>// todo multi-injection js
+</code></pre>
+    </div>
+  </div>
+</div>
+<!-- END TS TABS-->

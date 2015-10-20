@@ -25,14 +25,8 @@
   "bugs": {
     "url": "https://github.com/inversify/inversify.github.io/issues"
   },
-  "homepage": "inversify.io",
+  "homepage": "http://inversify.io",
   "devDependencies": {
-    "browser-sync": "^2.2.2",
-    "gulp": "^3.8.11",
-    "run-sequence": "^1.0.2"
-  },
-  "peerDependencies": {
-    "gulp": "^3.8.11",
-    "browser-sync": "^2.2.2"
+    "http-server": "^0.8.5"
   }
 }

@@ -1,0 +1,66 @@
+<p>todo</p>
+<!-- TS TABS -->
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#ts_contextual_binding" aria-controls="home" role="tab" data-toggle="tab">
+        TypeScript
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#js_contextual_binding" aria-controls="profile" role="tab" data-toggle="tab">
+        JavaScript
+      </a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="ts_contextual_binding">
+      <p>soldier.ts</p>
+<pre><code>/// &lt;reference path=&quot;../typings/inversify/inversify.d.ts&quot; /&gt;
+/// &lt;reference path=&quot;./interfaces.d.ts&quot;/&gt;
+
+import { inject } from "inversify";
+
+@inject("IWeapon","IWeapon")
+class Soldier {
+
+  private _mainWeapon : IWeapon;
+  private _secondaryWeapon : IWeapon;
+
+  constructor(main : IWeapon, secondary : IWeapon) {
+    this._mainWeapon = main;
+    this._secondaryWeapon = secondary;
+  }
+
+}
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>/// &lt;reference path=&quot;../typings/inversify/inversify.d.ts&quot; /&gt;
+/// &lt;reference path=&quot;./interfaces.d.ts&quot;/&gt;
+
+import { Kernel, Binding } from "inversify";
+import { Katana } from "./wespons/katana";
+import { Shuriken } from "./wespons/shuriken";
+
+var kernel = new Kernel();
+
+var katanaBinding = new Binding<IWeapon>("IWeapon").to(Katana).when((target) => { return target.name.equal("main"); });
+var shurikenBinding = new Binding<IWeapon>("IWeapon").to(Shuriken).when((target) => { return target.name.equal("secondary"); });
+
+kernel.bind(katanaBinding);
+kernel.bind(shurikenBinding);
+</code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="js_contextual_binding">
+      <p>soldier.ts</p>
+<pre><code>// todo contextual binding js
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>// todo contextual binding js
+</code></pre>
+    </div>
+  </div>
+</div>
+<!-- END TS TABS-->

@@ -1,0 +1,58 @@
+<p>todo</p>
+<!-- TS TABS -->
+<div role="tabpanel">
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active">
+      <a href="#ts_named_bindings" aria-controls="home" role="tab" data-toggle="tab">
+        TypeScript
+      </a>
+    </li>
+    <li role="presentation">
+      <a href="#js_named_bindings" aria-controls="profile" role="tab" data-toggle="tab">
+        JavaScript
+      </a>
+    </li>
+  </ul>
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="ts_named_bindings">
+      <p>soldier.ts</p>
+<pre><code>import { inject, named } from "inversify";
+
+@inject("IWeapon","IWeapon")
+class Soldier {
+
+  private _mainWeapon : IWeapon;
+  private _secondaryWeapon : IWeapon;
+
+  constructor(
+    @named("main") weapon: IWeapon,
+    @named("secondary") weapon: IWeapon
+  ) {
+
+    this._mainWeapon = main;
+    this._secondaryWeapon = secondary;
+  }
+
+}
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>import { Kernel, Binding } from "inversify";
+
+var kernel = new Kernel();
+kernel.bind(new Binding<IWeapon>("IWeapon").to(Katana).named("main"));
+kernel.bind(new Binding<IWeapon>("IWeapon").to(Shuriken).named("secondary"));
+</code></pre>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="js_named_bindings">
+      <p>soldier.ts</p>
+<pre><code>// todo named binding js
+</code></pre>
+      <p>inversify.config.ts</p>
+<pre><code>// todo named binding js
+</code></pre>
+    </div>
+  </div>
+</div>
+<!-- END TS TABS-->
